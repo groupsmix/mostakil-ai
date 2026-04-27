@@ -1,0 +1,46 @@
+---
+const faqs = [
+  { q: "هل أحتاج خبرة سابقة؟", a: "لا. الكتاب مكتوب للمبتدئ تماماً. كل ما تحتاجه: لاب توب، إنترنت، إنجليزية أساسية، وساعتان إلى أربع ساعات يومياً." },
+  { q: "هل أحتاج أن أكون مبرمجاً؟", a: "خمس من السبع خدمات لا تتطلب أي برمجة. الخدمتان المتقدمتان (روبوتات + GPTs) تستخدمان أدوات no-code." },
+  { q: "هل الأدوات المذكورة مجانية؟", a: "بعضها مجاني (Canva, CapCut, Audacity)، وبعضها مدفوع (Claude Pro 20$، Midjourney 10$). ميزانية الأدوات الشهرية بين ٢٥–١٠٠$ بحسب خدمتك." },
+  { q: "كم من الوقت سيأخذني الكتاب لأقرأه؟", a: "٤–٦ ساعات للقراءة الأولى. التطبيق يأخذ ٩٠ يوماً." },
+  { q: "هل الكتاب بصيغة قابلة للقراءة على الموبايل؟", a: "نعم، PDF محسّن للقراءة على الموبايل والكمبيوتر. تستلم أيضاً ملف Word قابلاً للتعديل." },
+  { q: "هل في تحديثات؟", a: "نعم، تحديثات سنوية مجانية للمشترين الأوائل. السوق يتغيّر، والكتاب يتحدّث معه." },
+  { q: "هل تقبل دفع غير دولي؟", a: "نعم. عبر Gumroad: بطاقات Visa/Mastercard العربية، STC Pay، Paymob (مصر)، Mada (السعودية)." },
+  { q: "ماذا لو لم أكن جاداً، فقط فضولي؟", a: "لا تشترِ. الكتاب لمن سينفّذ. لو لم تنفّذ، 47$ في القمامة. كن صادقاً مع نفسك." },
+];
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+<section id="faq" class="py-16 md:py-24 border-y border-white/5 bg-gradient-to-b from-ink-900/0 via-ink-800/30 to-ink-900/0">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      <span class="badge">أسئلة شائعة</span>
+      <h2 class="mt-4 text-3xl md:text-5xl font-black text-ink-50 text-balance">
+        أسئلة قبل الشراء — وإجاباتها مباشرةً.
+      </h2>
+    </div>
+    <div class="mt-10 max-w-3xl space-y-3">
+      {faqs.map((f, i) => (
+        <details class="card !p-0 group" open={i < 2}>
+          <summary class="flex items-center justify-between gap-4 p-5 md:p-6 text-ink-50 font-bold text-lg">
+            <span>{f.q}</span>
+            <span class="faq-icon shrink-0 grid place-items-center w-7 h-7 rounded-full bg-white/5 border border-white/10 transition-transform">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <div class="px-5 md:px-6 pb-5 md:pb-6 text-ink-200 leading-relaxed">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+</section>

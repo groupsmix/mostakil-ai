@@ -1,0 +1,29 @@
+---
+const items = [
+  { t: "ليس كتاباً تحفيزياً", d: "أرقام، أدوات، أسعار، نصوص جاهزة. لن تقرأ \"اتبع شغفك\"." },
+  { t: "مكتوب لعربي تحديداً", d: "لا ترجمة من كتاب إنجليزي. مكتوب للرياض، الدوحة، القاهرة، تونس." },
+  { t: "أرقام 2026 الحقيقية", d: "أسعار وأدوات محدّثة، لا بيانات قديمة من 2021." },
+  { t: "تركيز على التنفيذ", d: "كل فصل ينتهي بخطوات عملية تطبّقها اليوم." },
+  { t: "خدمات حقيقية، نطاقات حقيقية", d: "7 خدمات محدّدة، لكل واحدة workflow كامل." },
+  { t: "تحديثات سنوية مجانية", d: "للمشترين الأوائل، السوق يتغيّر والكتاب يتحدث معه." },
+];
+---
+<section class="py-16 md:py-24 border-y border-white/5 bg-gradient-to-b from-ink-900/0 via-ink-800/40 to-ink-900/0">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      <span class="badge">لماذا مختلف</span>
+      <h2 class="mt-4 text-3xl md:text-5xl font-black text-ink-50 text-balance">
+        ست ميزات تجعله مختلفاً عن أي كتاب آخر.
+      </h2>
+    </div>
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {items.map((it, i) => (
+        <div class="card">
+          <div class="text-3xl font-black text-brand-400">{(i+1).toString().padStart(2,"0")}</div>
+          <h3 class="mt-2 text-lg font-extrabold text-ink-50">{it.t}</h3>
+          <p class="mt-1 text-ink-300 text-sm leading-relaxed">{it.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

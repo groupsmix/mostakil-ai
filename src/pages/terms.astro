@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
+---
+<Layout title="شروط الاستخدام — مستقل الذكاء الاصطناعي" description="الشروط القانونية لاستخدام الموقع وشراء المنتجات.">
+  <Header />
+  <main id="main" class="py-16">
+    <article class="container-page max-w-3xl">
+      <h1 class="text-3xl md:text-5xl font-black text-ink-50">شروط الاستخدام</h1>
+      <p class="mt-3 text-ink-300">آخر تحديث: {new Date().toISOString().slice(0,10)}</p>
+
+      <div class="mt-8 space-y-6 text-ink-200 leading-relaxed">
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">١. الترخيص</h2>
+          <p>الكتاب وملحقاته للاستخدام الشخصي فقط. لا يُسمح بإعادة بيعه أو نشره على شبكات تورنت أو مشاركته بشكل عام. يجوز عرض اقتباسات قصيرة مع الإشارة إلى المصدر.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٢. لا ضمانات للنتائج</h2>
+          <p>نقدّم منهجاً وإطار عمل، لكن النتائج تعتمد على تنفيذك أنت. لا نضمن مبلغاً محدّداً ولا فترة زمنية معينة لتحقيق دخل.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٣. الأدوات الخارجية</h2>
+          <p>أدوات مثل Claude وMidjourney وElevenLabs مملوكة لشركاتها. أنت مسؤول عن الالتزام بشروط استخدامها.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٤. حدّ المسؤولية</h2>
+          <p>المسؤولية القصوى لـ {site.name} لا تتجاوز قيمة المبلغ الذي دفعته للمنتج.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٥. التواصل</h2>
+          <p>للاستفسارات: <a class="text-brand-300 underline" href={"mailto:" + site.supportEmail}>{site.supportEmail}</a></p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

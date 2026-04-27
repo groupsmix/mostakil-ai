@@ -1,0 +1,28 @@
+---
+import { site, checkoutUrl } from "../config/site";
+---
+<section class="py-20 md:py-28">
+  <div class="container-page">
+    <div class="relative max-w-4xl mx-auto text-center">
+      <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-500/30 via-brand-700/10 to-accent-500/20 blur-2xl"></div>
+      <div class="relative card !p-10 md:!p-14 border-brand-400/30">
+        <h2 class="text-3xl md:text-5xl font-black text-ink-50 text-balance">
+          الفجوة بين من يستخدم AI ومن لا يستخدمه
+          <span class="block text-brand-400 mt-2">ستكون أكبر فجوة دخل في حياتك المهنية.</span>
+        </h2>
+        <p class="mt-5 text-ink-200 text-lg leading-relaxed max-w-2xl mx-auto">
+          أنت إمّا تتحدّث عن AI، أو تكسب منه. {site.prices.launch}$ تفصلك عن مرجع يأخذك من الجانب الأول إلى الثاني.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <a href={checkoutUrl()} class="btn-primary text-base" data-cta="final-primary">
+            نعم، أريد نسختي الآن — {site.prices.launch}$
+          </a>
+          <a href="#lead" class="btn-secondary text-base" data-cta="final-leadmagnet">
+            خذ العيّنة المجانية أولاً
+          </a>
+        </div>
+        <p class="mt-5 text-sm text-ink-400">ضمان استرجاع ٧ أيام · دفع آمن · تحديثات مجانية مدى الحياة</p>
+      </div>
+    </div>
+  </div>
+</section>
