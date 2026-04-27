@@ -1,0 +1,59 @@
+---
+const services = [
+  { n: 1, title: "كتابة المحتوى الإنجليزي بالـ AI", price: "60–500$/مقال", tool: "Claude Pro" },
+  { n: 2, title: "تصميم الشعارات وهويات العلامات", price: "50–500$/كيت",  tool: "Midjourney + Canva" },
+  { n: 3, title: "التعليق الصوتي بـ ElevenLabs",      price: "30–100$/دقيقة", tool: "ElevenLabs" },
+  { n: 4, title: "روبوتات الدردشة بدون كود",         price: "150–1500$ + retainer", tool: "Chatbase / Voiceflow" },
+  { n: 5, title: "مونتاج فيديوهات قصيرة بالـ AI",    price: "25–60$/مقطع",   tool: "CapCut + Opus Clip" },
+  { n: 6, title: "مقالات SEO الكاملة",                price: "80–400$/مقال",  tool: "Claude + SurferSEO" },
+  { n: 7, title: "بناء GPTs ووكلاء AI مخصّصين",      price: "250–5000$/مشروع", tool: "OpenAI + n8n" },
+];
+const chapters = [
+  "المقدمة: لماذا 2026 هي أفضل سنة لتدخل Upwork عربياً",
+  "الفصل 1: العقلية الصحيحة (لا التحفيزية)",
+  "الفصل 2: بناء بروفايل Upwork يحصل على ردود",
+  "الفصل 3 → 9: الـ 7 خدمات بالتفصيل (workflow كامل لكل خدمة)",
+  "الفصل 10: كيف تكتب البروبوزال الذي يفوز (مع نصوص جاهزة)",
+  "الفصل 11: التسعير، المفاوضة، وتجنّب فخ الميزانية المنخفضة",
+  "الفصل 12: خارطة الـ 90 يوم — أسبوعاً بأسبوع",
+  "الخاتمة + ملاحق: قوالب رسائل، نصوص بروبوزال، قائمة الأدوات بأسعار 2026",
+];
+---
+<section id="what-inside" class="py-16 md:py-24">
+  <div class="container-page">
+    <div class="max-w-3xl">
+      <span class="badge">المحتوى</span>
+      <h2 class="mt-4 text-3xl md:text-5xl font-black text-ink-50 text-balance">
+        ٧ خدمات. ١٢ فصلاً. خارطة ٩٠ يوماً.
+      </h2>
+      <p class="mt-3 text-ink-300 text-lg">
+        كل خدمة بسعرها الواقعي على Upwork، أداتها الرئيسية، ومدّة التعلّم قبل أول وظيفة.
+      </p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {services.map((s) => (
+        <article class="card group hover:border-brand-400/40 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold tracking-widest text-brand-300">الخدمة {s.n.toString().padStart(2,"0")}</span>
+            <span class="badge !bg-accent-500/10 !border-accent-500/30 !text-accent-500">{s.price}</span>
+          </div>
+          <h3 class="mt-3 text-xl font-extrabold text-ink-50">{s.title}</h3>
+          <p class="mt-2 text-ink-300 text-sm">الأداة الأساسية: <span class="text-ink-100 font-semibold">{s.tool}</span></p>
+        </article>
+      ))}
+      <article class="card border-dashed border-brand-400/30 bg-brand-500/5">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold tracking-widest text-brand-300">إضافة</span>
+          <span class="badge !bg-brand-500/15 !border-brand-400/40 !text-brand-200">قوالب جاهزة</span>
+        </div>
+        <h3 class="mt-3 text-xl font-extrabold text-ink-50">8 رسائل + 7 بروبوزال + قائمة أدوات 2026</h3>
+        <p class="mt-2 text-ink-300 text-sm">جاهزة للنسخ والتخصيص لكل خدمة من الـ 7.</p>
+      </article>
+    </div>
+
+    <div class="mt-12 grid md:grid-cols-2 gap-x-10 gap-y-1">
+      {chapters.map((c) => <div class="check-row text-ink-100">{c}</div>)}
+    </div>
+  </div>
+</section>

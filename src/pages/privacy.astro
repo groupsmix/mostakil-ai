@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
+---
+<Layout title="سياسة الخصوصية — مستقل الذكاء الاصطناعي" description="كيف نتعامل مع بياناتك في مستقل الذكاء الاصطناعي.">
+  <Header />
+  <main id="main" class="py-16">
+    <article class="container-page max-w-3xl prose-content">
+      <h1 class="text-3xl md:text-5xl font-black text-ink-50">سياسة الخصوصية</h1>
+      <p class="mt-3 text-ink-300">آخر تحديث: {new Date().toISOString().slice(0,10)}</p>
+
+      <div class="mt-8 space-y-6 text-ink-200 leading-relaxed">
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">١. ما البيانات التي نجمعها؟</h2>
+          <p>نجمع فقط البريد الإلكتروني عند تنزيل العيّنة المجانية، وعند الشراء نتلقّى من مزوّد الدفع (Gumroad/Stripe) الاسم والبريد الإلكتروني وآخر ٤ أرقام من البطاقة. لا نخزّن بيانات الدفع.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٢. لماذا نجمعها؟</h2>
+          <p>إرسال الكتاب وروابط التحميل، إرسال تحديثات الكتاب، وردّاً على استفساراتك. لا نبيع البيانات لطرف ثالث.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٣. ملفات تعريف الارتباط (Cookies)</h2>
+          <p>نستخدم cookies تحليلية اختيارية (Google Analytics, Facebook Pixel, TikTok Pixel) لقياس أداء الصفحة. يمكنك تعطيلها من إعدادات المتصفح.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٤. حقوقك</h2>
+          <p>تستطيع طلب نسخة من بياناتك أو حذفها بإرسال إيميل إلى <a class="text-brand-300 underline" href={"mailto:" + site.supportEmail}>{site.supportEmail}</a>.</p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">٥. الأمان</h2>
+          <p>نستخدم HTTPS لتشفير الاتصال، ونعتمد مزوّدي بريد ودفع متوافقين مع GDPR وPCI DSS.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
+---
+<Layout title="سياسة الاسترجاع — مستقل الذكاء الاصطناعي" description="ضمان استرجاع 7 أيام بدون أسئلة.">
+  <Header />
+  <main id="main" class="py-16">
+    <article class="container-page max-w-3xl">
+      <h1 class="text-3xl md:text-5xl font-black text-ink-50">سياسة الاسترجاع</h1>
+      <p class="mt-3 text-ink-300">آخر تحديث: {new Date().toISOString().slice(0,10)}</p>
+
+      <div class="mt-8 space-y-6 text-ink-200 leading-relaxed">
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">ضمان ٧ أيام بدون أسئلة</h2>
+          <p>إذا اشتريت الكتاب ولم ترَ قيمته خلال ٧ أيام من الشراء، أرسل إيميلاً واحداً إلى <a class="text-brand-300 underline" href={"mailto:" + site.supportEmail}>{site.supportEmail}</a> ونعيد لك المبلغ كاملاً.</p>
+          <ul class="mt-4 space-y-1">
+            <li class="check-row">لا استمارات.</li>
+            <li class="check-row">لا أسئلة عن السبب.</li>
+            <li class="check-row">المعالجة خلال ٧٢ ساعة عمل.</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="text-2xl font-extrabold text-ink-50">شروط بسيطة</h2>
+          <p>الطلب يجب أن يكون خلال ٧ أيام من تاريخ الشراء. بعد رد المبلغ يُلغى وصولك إلى ملفات الكتاب والهدايا.</p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

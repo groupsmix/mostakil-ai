@@ -1,0 +1,25 @@
+---
+import { site, checkoutUrl } from "../config/site";
+---
+<header class="sticky top-0 z-40 backdrop-blur-md bg-ink-900/70 border-b border-white/5">
+  <div class="container-page flex items-center justify-between py-3">
+    <a href="/" class="flex items-center gap-2 group" aria-label={site.name}>
+      <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-ink-900 font-black shadow-md shadow-brand-600/30">
+        م
+      </span>
+      <span class="font-extrabold text-ink-50 group-hover:text-brand-300 transition-colors">
+        {site.shortName}
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm text-ink-200">
+      <a href="#what-inside" class="hover:text-brand-300">المحتوى</a>
+      <a href="#bonuses" class="hover:text-brand-300">الهدايا</a>
+      <a href="#pricing" class="hover:text-brand-300">السعر</a>
+      <a href="#faq" class="hover:text-brand-300">أسئلة</a>
+      <a href="#lead" class="hover:text-brand-300">عيّنة مجانية</a>
+    </nav>
+    <a href={checkoutUrl()} class="btn-primary text-sm py-2 px-4" data-cta="header">
+      احصل عليه الآن
+    </a>
+  </div>
+</header>

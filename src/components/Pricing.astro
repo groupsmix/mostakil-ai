@@ -1,0 +1,56 @@
+---
+import { site, checkoutUrl } from "../config/site";
+---
+<section id="pricing" class="py-20 md:py-28 relative">
+  <div class="container-page relative">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="badge">السعر</span>
+      <h2 class="mt-4 text-3xl md:text-5xl font-black text-ink-50 text-balance">
+        دفعة واحدة. وصول مدى الحياة.
+      </h2>
+      <p class="mt-3 text-ink-300 text-lg">أقل من جلسة استشارية واحدة. أكثر قيمة من 5 كورسات.</p>
+    </div>
+
+    <div class="mt-12 max-w-3xl mx-auto">
+      <div class="relative">
+        <div class="absolute -inset-1 rounded-[1.6rem] bg-gradient-to-br from-brand-500 via-brand-700 to-accent-600 opacity-70 blur-md"></div>
+        <div class="relative rounded-3xl bg-ink-900 border border-white/10 p-8 md:p-12">
+          <div class="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
+            <div class="flex-1">
+              <div class="flex items-center gap-3">
+                <span class="badge !bg-brand-500/15 !border-brand-400/40 !text-brand-200">عرض الإطلاق</span>
+                <span class="badge">PDF · 42 صفحة · عربي</span>
+              </div>
+              <h3 class="mt-3 text-2xl md:text-3xl font-black text-ink-50">حزمة "مستقل الذكاء الاصطناعي" الكاملة</h3>
+              <ul class="mt-5 space-y-1">
+                <li class="check-row text-ink-100">الكتاب الكامل (PDF + Word) — ١٢ فصلاً.</li>
+                <li class="check-row text-ink-100">قوالب رسائل + نصوص بروبوزال جاهزة.</li>
+                <li class="check-row text-ink-100">قائمة أدوات ٢٠٢٦ + بدائل مجانية.</li>
+                <li class="check-row text-ink-100">خارطة ٩٠ يوماً تنفيذية.</li>
+                <li class="check-row text-ink-100">تحديثات سنوية مجانية.</li>
+                <li class="check-row text-ink-100">ضمان استرجاع ٧ أيام، بلا أسئلة.</li>
+              </ul>
+            </div>
+            <div class="md:w-72 shrink-0">
+              <div class="card !p-6 border-brand-400/30 bg-gradient-to-b from-brand-500/10 to-transparent">
+                <div class="text-sm text-ink-300">السعر الكامل</div>
+                <div class="price-strike text-2xl">{site.prices.full}$</div>
+                <div class="mt-2 text-sm text-brand-300 font-bold">عرض الإطلاق</div>
+                <div class="text-5xl font-black text-ink-50 leading-none">
+                  {site.prices.launch}<span class="text-2xl text-ink-300">$</span>
+                </div>
+                <div class="mt-1 text-xs text-ink-400">دفعة واحدة · مدى الحياة</div>
+                <a href={checkoutUrl()} class="btn-primary w-full mt-5" data-cta="pricing-primary">
+                  أريد نسختي الآن
+                </a>
+                <p class="mt-3 text-[11px] text-ink-400 text-center leading-relaxed">
+                  دفع آمن عبر Gumroad / Stripe. يقبل Visa, Mastercard, Mada, STC Pay.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

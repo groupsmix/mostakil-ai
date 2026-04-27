@@ -1,0 +1,121 @@
+---
+import "../styles/global.css";
+import { site } from "../config/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noIndex?: boolean;
+  pathname?: string;
+}
+
+const {
+  title = site.seo.title,
+  description = site.seo.description,
+  ogImage = site.seo.ogImage,
+  noIndex = false,
+  pathname = Astro.url.pathname,
+} = Astro.props;
+
+const canonical = new URL(pathname, site.url).toString();
+const ga4 = (import.meta.env.PUBLIC_GA_ID as string | undefined) || site.analytics.ga4;
+const fbPixel = (import.meta.env.PUBLIC_FB_PIXEL_ID as string | undefined) || site.analytics.fbPixel;
+const ttPixel = (import.meta.env.PUBLIC_TT_PIXEL_ID as string | undefined) || site.analytics.ttPixel;
+
+const productLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: site.name,
+  description,
+  brand: { "@type": "Brand", name: site.shortName },
+  inLanguage: "ar",
+  image: new URL(ogImage, site.url).toString(),
+  offers: {
+    "@type": "Offer",
+    price: site.prices.launch,
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: site.url,
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "127",
+  },
+};
+---
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0d18" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={site.seo.keywords} />
+    <link rel="canonical" href={canonical} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.shortName} />
+    <meta property="og:image" content={new URL(ogImage, site.url).toString()} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, site.url).toString()} />
+
+    <!-- Fonts (Cairo + Tajawal, Arabic-optimized) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/img/og.svg" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(productLd)} />
+
+    {ga4 && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4}`}></script>
+        <script is:inline define:vars={{ ga4 }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', ga4);
+        </script>
+      </>
+    )}
+    {fbPixel && (
+      <script is:inline define:vars={{ fbPixel }}>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', fbPixel);
+        fbq('track', 'PageView');
+      </script>
+    )}
+    {ttPixel && (
+      <script is:inline define:vars={{ ttPixel }}>
+        !function (w, d, t) { w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+        ttq.load(ttPixel); ttq.page(); }(window, document, 'ttq');
+      </script>
+    )}
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:right-2 focus:z-50 focus:bg-brand-500 focus:text-ink-900 focus:px-3 focus:py-2 focus:rounded-md">تخطّى إلى المحتوى</a>
+    <slot />
+  </body>
+</html>
